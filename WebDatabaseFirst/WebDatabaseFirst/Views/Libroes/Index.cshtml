@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebDatabaseFirst.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Libros en Stock</h1>
+
+<p>
+    <a asp-action="Create">Añadir</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Autor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreLibro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutorLibro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LibroId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LibroId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LibroId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

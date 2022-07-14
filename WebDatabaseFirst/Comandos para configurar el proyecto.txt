@@ -1,0 +1,10 @@
+Scaffold-DbContext "Server=AQUIELSTRINGDECONEXIONDELABD" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+"ConnectionStrings": {
+    "AQUIVAELNOMBREDELCONTEXT": "Server=AQUIELSTRINGDECONEXIONDELABD"
+  }
+
+
+services.AddDbContext<AQUIVAELNOMBREDELCONTEXT>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("AQUIVAELNOMBREDELCONTEXT")));

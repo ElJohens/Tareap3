@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebDatabaseFirst.Models.PrestamoLibro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Libros Prestados</h1>
+
+<p>
+    <a asp-action="Create">Añadir</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Código del Libro
+            </th>
+            <th>
+                Nombre del Libro
+            </th>
+            <th>
+                Número de Prestamo
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibroId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrestamoLibroNavigation.NombreLibro)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PrestamoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrestamoLibroNavigation.AutorLibro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PrestamoLibroId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PrestamoLibroId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PrestamoLibroId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
